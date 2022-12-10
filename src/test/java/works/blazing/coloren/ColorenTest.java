@@ -121,7 +121,7 @@ class ColorenTest {
 
     @Test
     void testBuilder() {
-        Coloren coloren = new Coloren("#00fff2").setSaturation(90).increaseLightness(10);
+        Coloren coloren = new Coloren("#00fff2").saturation(90).lighten(10);
         assertEquals("#3df5ec", coloren.toHex());
     }
 
