@@ -121,7 +121,7 @@ class ColorenTest {
 
     @Test
     void testBuilder() {
-        Coloren coloren = new Coloren("#00fff2").setSaturation(90).lighten(10);
+        Coloren coloren = new Coloren("#00fff2").setSaturation(90).increaseLightness(10);
         assertEquals("#3df5ec", coloren.toHex());
     }
 
@@ -149,32 +149,32 @@ class ColorenTest {
     @Test
     void testLighten() {
         Coloren coloren = new Coloren("#00fff2");
-        coloren.lighten(10);
+        coloren.increaseLightness(10);
         assertEquals("#33fff5", coloren.toHex());
     }
 
     @Test
     void testDarken() {
         Coloren coloren = new Coloren("#00fff2");
-        coloren.darken(10);
+        coloren.decreaseLightness(10);
         assertEquals("#00ccc2", coloren.toHex());
     }
 
     @Test
     void testSaturate() {
         Coloren coloren = new Coloren("#00fff2");
-        coloren.saturate(10);
+        coloren.increaseSaturation(10);
         assertEquals("#00fff2", coloren.toHex());
 
         Coloren coloren2 = new Coloren("#40bfb9");
-        coloren2.saturate(10);
+        coloren2.increaseSaturation(10);
         assertEquals("#33ccc4", coloren2.toHex());
     }
 
     @Test
     void testDesaturate() {
         Coloren coloren = new Coloren("#00fff2");
-        coloren.desaturate(10);
+        coloren.decreaseSaturation(10);
         assertEquals("#0df2e7", coloren.toHex());
     }
 

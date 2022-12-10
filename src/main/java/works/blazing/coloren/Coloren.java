@@ -39,63 +39,57 @@ public class Coloren {
         return rgb.getRed();
     }
 
-    public Coloren setRed(int red) {
+    public void setRed(int red) {
         rgb.setRed(red);
-        return this;
     }
 
     public int getGreen() {
         return rgb.getGreen();
     }
 
-    public Coloren setGreen(int green) {
+    public void setGreen(int green) {
         rgb.setGreen(green);
-        return this;
     }
 
     public int getBlue() {
         return rgb.getBlue();
     }
 
-    public Coloren setBlue(int blue) {
+    public void setBlue(int blue) {
         rgb.setBlue(blue);
-        return this;
     }
 
     public int getHue() {
         return toHSL().getHue();
     }
 
-    public Coloren setHue(int hue) {
+    public void setHue(int hue) {
         HSL hsl = toHSL();
         hsl.h = hue;
         rgb = new RGB(hsl);
-        return this;
     }
 
     public int getSaturation() {
         return toHSL().getSaturation();
     }
 
-    public Coloren setSaturation(int saturation) {
+    public void setSaturation(int saturation) {
         HSL hsl = toHSL();
         hsl.s = saturation;
         rgb = new RGB(hsl);
-        return this;
     }
 
     public int getLightness() {
         return toHSL().getLightness();
     }
 
-    public Coloren setLightness(int lightness) {
+    public void setLightness(int lightness) {
         HSL hsl = toHSL();
         hsl.l = lightness;
         rgb = new RGB(hsl);
-        return this;
     }
 
-    public Coloren lighten(int amount) {
+    public void increaseLightness(int amount) {
         HSL hsl = toHSL();
         if(hsl.l + amount > 100) {
             hsl.l = 100;
@@ -103,10 +97,9 @@ public class Coloren {
             hsl.l += amount;
         }
         rgb = new RGB(hsl);
-        return this;
     }
 
-    public Coloren darken(int amount) {
+    public void decreaseLightness(int amount) {
         HSL hsl = toHSL();
         if(hsl.l - amount < 0) {
             hsl.l = 0;
@@ -114,10 +107,9 @@ public class Coloren {
             hsl.l -= amount;
         }
         rgb = new RGB(hsl);
-        return this;
     }
 
-    public Coloren saturate(int amount) {
+    public void increaseSaturation(int amount) {
         HSL hsl = toHSL();
         if(hsl.s + amount > 100) {
             hsl.s = 100;
@@ -125,10 +117,9 @@ public class Coloren {
             hsl.s += amount;
         }
         rgb = new RGB(hsl);
-        return this;
     }
 
-    public Coloren desaturate(int amount) {
+    public void decreaseSaturation(int amount) {
         HSL hsl = toHSL();
         if(hsl.s - amount < 0) {
             hsl.s = 0;
@@ -136,10 +127,9 @@ public class Coloren {
             hsl.s -= amount;
         }
         rgb = new RGB(hsl);
-        return this;
     }
 
-    public Coloren spin(int amount) {
+    public void spinHue(int amount) {
         HSL hsl = toHSL();
         if(hsl.h + amount >= 360) {
             hsl.h = 360 - hsl.h;
@@ -147,7 +137,72 @@ public class Coloren {
             hsl.h += amount;
         }
         rgb = new RGB(hsl);
-        return this;
+    }
+
+    public Coloren red(int amount) {
+        Coloren c = new Coloren(this.rgb);
+        c.setRed(amount);
+        return c;
+    }
+
+    public Coloren green(int amount) {
+        Coloren c = new Coloren(this.rgb);
+        c.setGreen(amount);
+        return c;
+    }
+
+    public Coloren blue(int amount) {
+        Coloren c = new Coloren(this.rgb);
+        c.setBlue(amount);
+        return c;
+    }
+
+    public Coloren hue(int amount) {
+        Coloren c = new Coloren(this.rgb);
+        c.setHue(amount);
+        return c;
+    }
+
+    public Coloren saturation(int amount) {
+        Coloren c = new Coloren(this.rgb);
+        c.setSaturation(amount);
+        return c;
+    }
+
+    public Coloren lightness(int amount) {
+        Coloren c = new Coloren(this.rgb);
+        c.setLightness(amount);
+        return c;
+    }
+
+    public Coloren spin(int amount) {
+        Coloren c = new Coloren(this.rgb);
+        c.spinHue(amount);
+        return c;
+    }
+
+    public Coloren lighten(int amount) {
+        Coloren c = new Coloren(this.rgb);
+        c.increaseLightness(amount);
+        return c;
+    }
+
+    public Coloren darken(int amount) {
+        Coloren c = new Coloren(this.rgb);
+        c.decreaseLightness(amount);
+        return c;
+    }
+
+    public Coloren saturate(int amount) {
+        Coloren c = new Coloren(this.rgb);
+        c.increaseSaturation(amount);
+        return c;
+    }
+
+    public Coloren desaturate(int amount) {
+        Coloren c = new Coloren(this.rgb);
+        c.decreaseSaturation(amount);
+        return c;
     }
 
 }
