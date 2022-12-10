@@ -19,7 +19,7 @@ public class RGB {
     }
 
     public RGB(HSL hsl) {
-        var rgb = hsl.toRGB();
+        RGB rgb = hsl.toRGB();
         this.r = rgb.r;
         this.g = rgb.g;
         this.b = rgb.b;

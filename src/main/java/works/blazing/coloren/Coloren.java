@@ -67,7 +67,7 @@ public class Coloren {
     }
 
     public Coloren setHue(int hue) {
-        var hsl = toHSL();
+        HSL hsl = toHSL();
         hsl.h = hue;
         rgb = new RGB(hsl);
         return this;
@@ -78,7 +78,7 @@ public class Coloren {
     }
 
     public Coloren setSaturation(int saturation) {
-        var hsl = toHSL();
+        HSL hsl = toHSL();
         hsl.s = saturation;
         rgb = new RGB(hsl);
         return this;
@@ -89,14 +89,14 @@ public class Coloren {
     }
 
     public Coloren setLightness(int lightness) {
-        var hsl = toHSL();
+        HSL hsl = toHSL();
         hsl.l = lightness;
         rgb = new RGB(hsl);
         return this;
     }
 
     public Coloren lighten(int amount) {
-        var hsl = toHSL();
+        HSL hsl = toHSL();
         if(hsl.l + amount > 100) {
             hsl.l = 100;
         } else {
@@ -107,7 +107,7 @@ public class Coloren {
     }
 
     public Coloren darken(int amount) {
-        var hsl = toHSL();
+        HSL hsl = toHSL();
         if(hsl.l - amount < 0) {
             hsl.l = 0;
         } else {
@@ -118,7 +118,7 @@ public class Coloren {
     }
 
     public Coloren saturate(int amount) {
-        var hsl = toHSL();
+        HSL hsl = toHSL();
         if(hsl.s + amount > 100) {
             hsl.s = 100;
         } else {
@@ -129,7 +129,7 @@ public class Coloren {
     }
 
     public Coloren desaturate(int amount) {
-        var hsl = toHSL();
+        HSL hsl = toHSL();
         if(hsl.s - amount < 0) {
             hsl.s = 0;
         } else {
@@ -140,7 +140,7 @@ public class Coloren {
     }
 
     public Coloren spin(int amount) {
-        var hsl = toHSL();
+        HSL hsl = toHSL();
         if(hsl.h + amount >= 360) {
             hsl.h = 360 - hsl.h;
         } else {
